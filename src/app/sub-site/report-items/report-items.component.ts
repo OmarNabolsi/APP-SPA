@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { ReportModel } from './../../models/report-model';
 import { Component, OnInit, Input } from '@angular/core';
 
@@ -9,7 +10,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ReportItemsComponent implements OnInit {
   @Input() report: ReportModel;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
@@ -24,5 +25,9 @@ export class ReportItemsComponent implements OnInit {
     document.getElementById(id + '.1').classList.remove('sp-item-title-hover');
     document.getElementById(id + '.2').classList.remove('sp-item-title-hover');
     document.getElementById(id + '.3').style.visibility = 'hidden';
+  }
+
+  navigateTo() {
+    this.router.navigate(['report']); // {skipLocationChange: true});
   }
 }

@@ -18,6 +18,7 @@ import { HomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
 import { SubSiteComponent } from './sub-site/sub-site.component';
+import { ReportFrameComponent } from './report-frame/report-frame.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { SubSiteComponent } from './sub-site/sub-site.component';
       HomeComponent,
       ReportLinksComponent,
       SubSiteComponent,
-      ReportItemsComponent
+      ReportItemsComponent,
+      ReportFrameComponent
    ],
    imports: [
       BrowserModule,
@@ -35,7 +37,7 @@ import { SubSiteComponent } from './sub-site/sub-site.component';
       FormsModule,
       MatIconModule,
       MatProgressSpinnerModule,
-      RouterModule.forRoot(appRoutes, {useHash: true})
+      RouterModule.forRoot(appRoutes, {useHash: true}),
    ],
    providers: [
       PostService

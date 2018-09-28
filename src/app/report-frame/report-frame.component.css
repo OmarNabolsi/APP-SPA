@@ -1,0 +1,21 @@
+.ag-page-title {
+    font-size: 2.77em;
+    font-weight: 200;
+    color: #0072C6;
+}
+  
+hr {
+    margin-bottom: 25px;
+    border-top-color: rgb(0,114,198);
+}
+  
+iframe {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+#rpframe {
+    min-height: 500px;
+    min-width: -webkit-fill-available;
+}
+  
