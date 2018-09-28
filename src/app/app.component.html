@@ -1,0 +1,11 @@
+
+<div class="overlay" *ngIf="!isReady">
+  <div class="loading">
+    <mat-spinner></mat-spinner>
+    <p class="ld-text">Loading...</p>
+  </div>
+</div>
+<!--  -->
+<main class="container container-fluid h-100" *ngIf="isReady">
+  <router-outlet></router-outlet>
+</main>

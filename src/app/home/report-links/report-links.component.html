@@ -1,0 +1,33 @@
+<div id="Tile_1_1" class="pl-tileview-tile-root">
+  <div id="Tile_1_2" class="pl-tileview-tile-content" aria-haspopup="true"
+    (mouseenter)="mouseOver(portalPages.num)"
+    (mouseleave)="mouseOut(portalPages.num)">
+
+    <a id="Tile_1_3"
+      (click)="pageNavigate(portalPages)"
+      >
+      <span class="pl-span">
+        <img src="{{ portalPages.imageUrl }}" alt="{{ portalPages.title }} Page" onerror="this.src='https://dsu.aubmc.org.lb/SiteAssets/images/lReportsLibrary.png'" >
+      </span>
+      <div id="{{ portalPages.num }}" class="pl-tileview-tile-detailsBox">
+        <ul class="pl-noList pl-tileview-tile-detailsListMedium">
+          <li id="Tile_1_5" class="pl-tileview-tile-tileMedium pl-tileview-tile-tileMediumCollapsed" 
+            collapsed="pl-tileview-tile-tileMedium pl-tileview-tile-tileMediumCollapsed" 
+            expanded="pl-tileview-tile-tileMedium pl-tileview-tile-tileMediumExpanded">
+            <div class="pl-tileview-tile-titleTextMediumCollapsed"
+              collapsed="pl-tileview-tile-titleTextMediumCollapsed"
+              expanded="pl-tileview-tile-titleTextMediumExpanded"
+              >{{portalPages.title}}
+            </div>
+          </li>
+          <li id="Tile_1_6"
+            title="Description."
+            class="pl-tileview-tile-descriptionMedium"
+            >{{portalPages.description}}
+          </li>
+        </ul>
+      </div>
+    </a>
+
+  </div>
+</div>

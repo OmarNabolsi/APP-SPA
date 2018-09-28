@@ -1,0 +1,16 @@
+<div class="sp-item-group mat-elevation-z4" role="button" 
+(mouseenter)="mouseEnter(report.name)" 
+(mouseleave)="mouseLeave(report.name)"
+>
+  <div class="sp-panel">
+    <div class="sp-panel-header">
+      <span class="sp-header-content">
+        <div id="{{ report.name }}.1" class="sp-item-title">{{ report.title }}</div>
+        <div id="{{ report.name }}.2" class="sp-item-description">
+          <span></span>
+          <mat-icon id="{{ report.name }}.3" style="visibility:hidden">print</mat-icon>
+        </div>
+      </span>
+    </div>
+  </div>
+</div>

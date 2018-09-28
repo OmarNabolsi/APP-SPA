@@ -1,0 +1,26 @@
+.ag-page-title {
+    font-size: 2.77em;
+    font-weight: 200;
+    color: #0072C6;
+  }
+  
+  hr {
+    margin-bottom: 25px;
+    border-top-color: rgb(0,114,198);
+  }
+  
+  app-report-items {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  
+  .example-headers-align .mat-expansion-panel-header-title, 
+  .example-headers-align .mat-expansion-panel-header-description {
+    flex-basis: 0;
+  }
+  
+  .example-headers-align .mat-expansion-panel-header-description {
+    justify-content: space-between;
+    align-items: center;
+  }
+  

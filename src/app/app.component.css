@@ -1,0 +1,33 @@
+
+.overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(255, 255, 255);
+}
+
+.overlay .loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.ld-text {
+  text-align: center;
+  color: #3f51b5;
+  font-weight: 500;
+}
+
+main {
+  /* margin: 1rem; */
+  /* padding: 1rem; */
+}
+
+
+.ms-rtestate-read .ms-rte-wpbox {
+  margin-top: -54px;
+}
