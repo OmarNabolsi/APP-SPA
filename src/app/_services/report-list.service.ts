@@ -15,7 +15,7 @@ export class ReportListService {
   endPoint = '/_api/Web/GetFolderByServerRelativeUrl(\'/';
   folderDir = '/Shared%20Documents/SSRS_Reports\')/Files';
   listQuery = '?$select=Title,Name,ServerRelativeUrl';
-  filter = '&$filter=effectivebasepermissions/high%20gt%2032';
+  filter = '';
 
   constructor(private http: HttpClient) { }
 
@@ -23,4 +23,8 @@ export class ReportListService {
     return this.http.get(this.baseUrl + pageName + this.endPoint + pageName + this.folderDir + this.listQuery, httpOptions);
   }
 
+  getReportByName(pageName, reportName) {
+    this.filter = '&$filter=Name eq \'' + reportName + '\'';
+    return this.http.get(this.baseUrl + pageName + this.endPoint + pageName + this.folderDir + this.listQuery + this.filter, httpOptions);
+  }
 }

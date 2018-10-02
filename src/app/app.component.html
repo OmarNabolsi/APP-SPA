@@ -5,7 +5,15 @@
     <p class="ld-text">Loading...</p>
   </div>
 </div>
-<!--  -->
-<main class="container container-fluid h-100" *ngIf="isReady">
+<!-- *ngIf="isReady" -->
+
+<div class="overflow-hidden text-center" style="margin-top: -10px;" *ngIf="isReady">
+  <div class="col-md-3 mx-auto">
+    <img id="logo" src="https://dsu.aubmc.org.lb/SiteAssets/DS-icon2-150px%20(2).png" alt="LOGO" style="width: 20%;">
+    <h2 id="pageTitle" class="font-weight-normal">Decision Support Unit</h2>
+  </div>
+</div>
+
+<main class="position-relative overflow-hidden text-center" *ngIf="isReady">
   <router-outlet></router-outlet>
 </main>

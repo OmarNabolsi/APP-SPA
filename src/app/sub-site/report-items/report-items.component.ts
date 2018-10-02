@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 import { ReportModel } from './../../models/report-model';
 import { Component, OnInit, Input } from '@angular/core';
 
@@ -9,6 +9,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ReportItemsComponent implements OnInit {
   @Input() report: ReportModel;
+  @Input() path: string;
 
   constructor(private router: Router) { }
 
@@ -28,6 +29,18 @@ export class ReportItemsComponent implements OnInit {
   }
 
   navigateTo() {
-    this.router.navigate(['report']); // {skipLocationChange: true});
+    // this.router.navigate(['report/', this.path, this.report.name]);
+    const extras: NavigationExtras = {
+      queryParams: {
+        'path': this.path,
+        'name': this.report.name,
+        'rpUrl': this.report.relativeUrl,
+        'title': this.report.title
+      },
+      skipLocationChange: true,
+      preserveFragment: true
+    };
+    localStorage.setItem('reportName', this.report.title);
+    this.router.navigate(['report'], extras);
   }
 }

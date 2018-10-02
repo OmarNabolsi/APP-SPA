@@ -1,5 +1,63 @@
+<nav class="sp-nav">
+  <a [routerLink]="['/']" class="sp-nav-btn-active btn disabled">Home</a>
+</nav>
 <div class="row">
-  <div class="col">
-      <app-report-links *ngFor="let p of portalLinks" [portalPages]="p"></app-report-links>
+  <div class="col-sm-9 sp-main-content">
+    <app-report-links *ngFor="let p of portalLinks" [portalPages]="p"></app-report-links>
+  </div>
+  <div class="col-sm-2 sp-side-right">
+    <div class="card bg-light"  style="width: 40%;">
+      <div>
+        <img class="card-img-top" src="https://dsu.aubmc.org.lb/SiteAssets/Qlikview_logo.png" alt="QlikView">
+        <div class="card-body">
+          <h4 class="card-title">QlikView</h4>
+          <p class="card-text"><small>Access the Dashbords on QlikView.</small></p>
+          <button type="button" (onclick)="goToQlikView()" class="btn btn-outline-success btn-sm btn-block">Go to Dashboard</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card bg-light"  style="width: 40%;">
+      <div>
+        <div class="card-img-top"><img class="rq-img" src="https://dsu.aubmc.org.lb/SiteAssets/ltissue.png" alt="Request"></div>
+        <div class="card-body">
+          <h4 class="card-title">New Request</h4>
+          <p class="card-text"><small>Request for Data, Reports and Analytics.</small></p>
+          <button type="button" (onclick)="geToRequest()" class="btn btn-outline-primary btn-sm btn-block">Request</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+<!-- 
+<hr>
+
+<div class="row" style="margin: 50px;">
+
+    <div class="col-sm-6 d-flex justify-content-end" style="padding: 0;">
+      <div class="card bg-light"  style="width: 40%;">
+        <div>
+          <img class="card-img-top" src="https://dsu.aubmc.org.lb/SiteAssets/Qlik_logo.png" alt="QlikView">
+          <div class="card-body">
+            <h4 class="card-title">QlikView</h4>
+            <p class="card-text"><small>Access the Dashbords on QlikView.</small></p>
+            <button type="button" (onclick)="goToQlikView()" class="btn btn-outline-success btn-sm btn-block">Go to Dashboard</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-sm-6 d-flex justify-content-start" style="padding: 0;">
+        <div class="card bg-light"  style="width: 40%;">
+            <div>
+              <div class="card-img-top"><img class="rq-img" src="https://dsu.aubmc.org.lb/SiteAssets/ltissue.png" alt="Request"></div>
+              <div class="card-body">
+                <h4 class="card-title">New Request</h4>
+                <p class="card-text"><small>Request for Data, Reports and Analytics.</small></p>
+                <button type="button" (onclick)="geToRequest()" class="btn btn-outline-primary btn-sm btn-block">Request</button>
+              </div>
+            </div>
+          </div>
+    </div>
+  
+  </div> -->

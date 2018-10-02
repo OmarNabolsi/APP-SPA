@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
       titlerow.style.visibility = 'hidden';
       titlerow.style.maxHeight = '0';
       titlerow.style.padding = '0';
+
       this.isReady = true;
     }, 1000);
   }

@@ -24,7 +24,7 @@
 }
 
 img {
-    position: absolute;
+    /* position: absolute; */
     border: none;
     max-width: 96px;
     min-width: 96px;

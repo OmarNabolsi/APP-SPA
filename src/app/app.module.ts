@@ -5,14 +5,10 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FlexLayoutModule } from '@angular/flex-layout';
 
-import { MatButtonModule, MatInputModule, MatCardModule, MatDividerModule,
-  MatToolbarModule, MatExpansionModule, MatIconModule, MatSidenavModule, MatListModule, MatMenuModule,
-  MatTableModule, MatPaginatorModule, MatSortModule, MatProgressSpinnerModule
+import { MatIconModule, MatProgressSpinnerModule
 } from '@angular/material';
 import { FormsModule } from '@angular/forms';
-import { PostService } from './_services/post.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
@@ -39,9 +35,7 @@ import { ReportFrameComponent } from './report-frame/report-frame.component';
       MatProgressSpinnerModule,
       RouterModule.forRoot(appRoutes, {useHash: true}),
    ],
-   providers: [
-      PostService
-   ],
+   providers: [],
    bootstrap: [
       AppComponent
    ]

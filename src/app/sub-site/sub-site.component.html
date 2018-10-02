@@ -1,12 +1,18 @@
-<div class="row">
+<!-- <div class="row">
   <div class="col">
     <span class="ag-page-title">{{ path }}</span>
     <hr>
   </div>
-</div>
+</div> -->
+<nav class="sp-nav">
+  <a [routerLink]="['/']" class="sp-nav-btn">Home</a>
+  <i class="material-icons sp-nav-icon">arrow_forward_ios</i>
+  <a href="#" class="sp-nav-btn-active btn disabled">{{ pageName }}</a>
+</nav>
 <div class="row">
     <app-report-items class="col-md-6 col-sm-12" 
       style="min-width: fit-content;"
       *ngFor="let report of reports" 
-      [report]="report"></app-report-items>
+      [report]="report"
+      [path]="path"></app-report-items>
 </div>

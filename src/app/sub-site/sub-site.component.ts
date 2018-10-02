@@ -11,12 +11,15 @@ import { ActivatedRoute } from '@angular/router';
 export class SubSiteComponent implements OnInit {
   reports: ReportModel[] = [];
   path = '';
+  pageName = '';
 
   constructor(private route: ActivatedRoute,
     private reportListService: ReportListService) { }
 
   ngOnInit() {
     this.path = this.route.snapshot.params.url;
+    this.pageName = localStorage.getItem('pageName');
+    localStorage.removeItem('reportName');
 
     this.reportListService.getReports(this.path).subscribe((r: any) => {
       const results = r.d.results;

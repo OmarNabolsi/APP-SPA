@@ -24,6 +24,8 @@ export class ReportLinksComponent implements OnInit {
   }
 
   pageNavigate(currentPage) {
+    localStorage.setItem('pageName', currentPage.title);
+    localStorage.setItem('pageUrl', currentPage.url.split('/')[3]);
     this.router.navigate(['subsite/', currentPage.url.split('/')[3]]); // {skipLocationChange: true});
   }
 

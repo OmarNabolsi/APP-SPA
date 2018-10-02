@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { SphomeService } from './../_services/sphome.service';
 import { PortalLinkModel } from './../models/portal-link-model';
 import { Component, OnInit } from '@angular/core';
@@ -10,7 +11,8 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
   portalLinks: PortalLinkModel[] = [];
 
-  constructor(private spHome: SphomeService) { }
+  constructor(private spHome: SphomeService,
+    private router: Router) { }
 
   ngOnInit() {
     this.onGetSubSites();
@@ -28,9 +30,19 @@ export class HomeComponent implements OnInit {
         pLink.url = results[i].Url;
         this.portalLinks.push(pLink);
       }
-      console.log(this.portalLinks);
+      localStorage.removeItem('pageName');
+      localStorage.removeItem('pageUrl');
+      localStorage.removeItem('reportName');
     }, error => {
       console.log(error);
     });
+  }
+
+  goToQlikView() {
+    this.router.navigateByUrl('http://qlikview-srv/qlikview/index.htm');
+  }
+
+  geToRequest() {
+    this.router.navigateByUrl('https://his.aubmc.org.lb/eforms/formDashboard.aspx?id=748&bp=1');
   }
 }

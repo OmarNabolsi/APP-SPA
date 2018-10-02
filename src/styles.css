@@ -21,3 +21,12 @@ body {
 #s4-titlerow {
     display: none;
 }
+
+#contentBox {
+    margin-left: 0;
+    Margin-right: 0;
+}
+
+div.article {
+    padding: 0;
+}

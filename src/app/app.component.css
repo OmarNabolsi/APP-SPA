@@ -16,6 +16,16 @@
   left: 50%;
 }
 
+#logo {
+  width: 20%;
+  transition: 0.2s;
+}
+
+#pageTitle {
+  color: #4d4d4d;
+  transition: 0.2s;
+}
+
 .ld-text {
   text-align: center;
   color: #3f51b5;
@@ -23,11 +33,64 @@
 }
 
 main {
-  /* margin: 1rem; */
-  /* padding: 1rem; */
+  margin-top: -15px;
+  padding: 0px 80px;
 }
 
 
 .ms-rtestate-read .ms-rte-wpbox {
   margin-top: -54px;
+}
+.sp-nav {
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgb(0,114,198);
+  margin-bottom: 15px;
+}
+
+
+/* 
+.sep {
+  border-top-width: 2px;
+  border-top-style: solid;
+  height: 0;
+  min-width: 132px;
+  border-top-color: rgba(43, 138, 201, 0.863);
+} */
+
+.sp-nav-icon {
+  margin-left: -9px;
+  padding: 10px 15px 5px 15px;
+  color: #666666;
+  font-size: 18px;
+}
+
+.sp-nav-btn {
+  /* border-radius: 0px 50px 50px 0px; */
+  padding: 10px 15px 5px 0;
+  color: #666666;
+  font-size: 2.77em;
+  font-weight: 200;
+}
+
+.btn.disabled, .btn:disabled {
+  opacity: 1;
+}
+
+.sp-nav-btn-active {
+  color: #0072c6;
+}
+
+.ag-page-title {
+  font-size: 2.77em;
+  font-weight: 200;
+  color: #0072C6;
+}
+
+hr {
+  margin-bottom: 25px;
+  border-top-color: rgb(0,114,198);
 }
