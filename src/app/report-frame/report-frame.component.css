@@ -64,7 +64,7 @@ iframe {
 }
 
 #rpframe {
-    min-height: 500px;
+    min-height: 100%;
     min-width: 100%;
 }
   

@@ -1,0 +1,48 @@
+ng build --prod --aot --deploy-url https://dsu.aubmc.org.lb/SiteAssets/HomePage/ --watch
+
+
+ng build --prod --aot --deploy-url https://dsu.aubmc.org.lb/SiteAssets/Main/
+
+
+https://dsu.aubmc.org.lb/PatientAffairs/_layouts/15/ReportServer/RSViewerPage.aspx?rv:RelativeReportUrl=/PatientAffairs/Shared%20Documents/SSRS_Reports/WeeklyReport.rdl&rv:HeaderArea=None&rv:ParamMode=Collapsed&rv:ToolBar=Full&rv:ToolBarItemsDisplayMode=-1
+
+
+https://dsu.aubmc.org.lb/_api/web/webs/?$select=Id,Title,Description,SiteLogoUrl,Url&$filter=effectivebasepermissions/high%20gt%2032
+
+
+
+https://dsu.aubmc.org.lb/PatientAffairs/_api/Web/GetFolderByServerRelativeUrl(https://dsu.aubmc.org.lb/PatientAffairs/Shared%20Documents/SSRS_Reports)?$expand=Files
+
+https://dsu.aubmc.org.lb/_api/SP.AppContextSite(@target)/web/GetFolderByServerRelativeUrl('/PatientAffairs/Shared%20Documents/SSRS_Reports')/getitems?$select=ID,Title&@target='"+ OEPContext.hostWebUrl + "'"
+
+
+https://dsu.aubmc.org.lb/PatientAffairs/_api/Web/GetFolderByServerRelativeUrl('/PatientAffairs/Shared%20Documents/SSRS_Reports')/Files?$select=Title,Name,ServerRelativeUrl&$filter=Name/WeeklyReport.rdl
+
+
+
+https://dsu.aubmc.org.lb/
+PatientAffairs
+/_api/Web/GetFolderByServerRelativeUrl('/
+PatientAffairs
+/Shared%20Documents/SSRS_Reports')/Files
+
+https://dsu.aubmc.org.lb/PatientAffairs/_layouts/15/ReportServer/RSViewerPage.aspx?rv:RelativeReportUrl=
+/PatientAffairs/Shared%20Documents/SSRS_Reports/WeeklyReport.rdl
+&rv:HeaderArea=None&rv:ToolBar=Full&rv:ToolBarItemsDisplayMode=-1
+
+
+
+
+
+https://dsu.aubmc.org.lb/EmergencyUnit/_api/Web/GetFolderByServerRelativeUrl('/EmergencyUnit/Shared%20Documents/SSRS_Reports')/Files?$select=Title,Name,ServerRelativeUrl&$filter=substringof('.rdl',Name)&$OrderBy=Name
+
+
+
+
+https://dsu.aubmc.org.lb/_api/lists/getbytitle('Reports Logs')?$select=ListItemEntityTypeFullName
+
+SP.Data.Reports_x0020_LogsListItem
+
+https://dsu.aubmc.org.lb/_api/lists/getbytitle('Reports Logs')/items
+
+https://dsu.aubmc.org.lb/_api/web/currentUser

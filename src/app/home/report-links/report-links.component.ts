@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,12 +6,20 @@ import { Router } from '@angular/router';
   templateUrl: './report-links.component.html',
   styleUrls: ['./report-links.component.css']
 })
-export class ReportLinksComponent implements OnInit {
+export class ReportLinksComponent implements OnInit, AfterViewInit {
   @Input() portalPages: any = [];
+  @Input() lastPage: Boolean = false;
+  @Output() isFinished = new EventEmitter();
 
   constructor(private router: Router) { }
 
   ngOnInit() {
+  }
+
+  ngAfterViewInit() {
+    if (this.lastPage) {
+      this.isFinished.emit(this.lastPage);
+    }
   }
 
   mouseOver(id) {

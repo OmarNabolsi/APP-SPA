@@ -1,7 +1,7 @@
-import { Router } from '@angular/router';
 import { SphomeService } from './../_services/sphome.service';
 import { PortalLinkModel } from './../models/portal-link-model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { SharedService } from '../_services/shared.service';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
   portalLinks: PortalLinkModel[] = [];
 
   constructor(private spHome: SphomeService,
-    private router: Router) { }
+    private sharedService: SharedService) { }
 
   ngOnInit() {
     this.onGetSubSites();
@@ -38,11 +38,15 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  goToQlikView() {
-    this.router.navigateByUrl('http://qlikview-srv/qlikview/index.htm');
+  reportLinksFinished() {
+    this.sharedService.emitChange(true);
   }
 
-  geToRequest() {
-    this.router.navigateByUrl('https://his.aubmc.org.lb/eforms/formDashboard.aspx?id=748&bp=1');
+  goToQlikView() {
+    window.location.href = 'http://qlikview-srv/qlikview/index.htm';
+  }
+
+  goToRequest() {
+    window.location.href = 'https://his.aubmc.org.lb/eforms/formDashboard.aspx?id=748&bp=1';
   }
 }

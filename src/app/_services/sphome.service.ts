@@ -32,4 +32,12 @@ export class SphomeService {
   getSiteRoles() {
     return this.http.get(this.baseUrl + this.siteRoles, httpOptions);
   }
+
+  getAdmins() {
+    return this.http.get(this.baseUrl + '_api/lists/getbytitle(\'Admins\')/items', httpOptions);
+  }
+
+  getCurrentUser() {
+    return this.http.get(this.baseUrl + '_api/web/currentUser', httpOptions);
+  }
 }

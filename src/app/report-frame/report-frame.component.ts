@@ -1,3 +1,5 @@
+import { SharedService } from './../_services/shared.service';
+import { ReportLogService } from './../_services/report-log.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, AfterViewInit } from '@angular/core';
@@ -19,9 +21,14 @@ export class ReportFrameComponent implements OnInit, AfterViewInit {
   reportFrameSrc = '';
   pageUrl = '';
   pageName = '';
+  iframeLoaded = false;
+  reqDigest: string;
+  reportSrc;
 
   constructor(private route: ActivatedRoute,
-    private sanitizer: DomSanitizer) { }
+    private sanitizer: DomSanitizer,
+    private reportLogService: ReportLogService,
+    private sharedService: SharedService) { }
 
   ngOnInit() {
     this.pageUrl = localStorage.getItem('pageUrl');
@@ -42,19 +49,48 @@ export class ReportFrameComponent implements OnInit, AfterViewInit {
       this.reportName = data.name;
       this.reportUrl = data.url;
       this.reportTitle = data.title;
-    });
+      this.reportSrcUrl();
+    }, error => console.log(error));
+
+    this.reqDigest = (document.getElementById('__REQUESTDIGEST') as HTMLInputElement).value;
   }
 
   ngAfterViewInit() {
-    const rpframe = document.getElementById('rpframe') as HTMLIFrameElement;
-    rpframe.width = rpframe.contentWindow.document.body.scrollWidth.toString() + 'px';
-    rpframe.height = rpframe.contentWindow.document.body.scrollHeight.toString() + 'px';
+    this.sharedService.emitChange(true);
   }
 
   reportSrcUrl() {
     this.reportFrameSrc = this.baseUrl + this.path + this.rsViewer + this.reportUrl + this.rvParams;
-    const reportSrcUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.reportFrameSrc);
-    return reportSrcUrl;
+    this.reportSrc = this.sanitizer.bypassSecurityTrustResourceUrl(this.reportFrameSrc);
+    setTimeout(() => {
+      this.onLoaded();
+    }, 1000);
   }
 
+  onLoaded() {
+    if (!this.iframeLoaded) {
+      const rlog = { title: this.reportTitle };
+      this.iframeLoaded = true;
+      this.reportLogService.createLog(rlog, this.reqDigest).subscribe((res: any) => {
+        const rpframe = document.getElementById('rpframe') as HTMLIFrameElement;
+        rpframe.width = rpframe.contentWindow.document.body.scrollWidth.toString() + 'px';
+        rpframe.height = '1250px';
+        // rpframe.width = rpframe.contentWindow.document.body.scrollWidth.toString() + 'px';
+        // rpframe.height = '1250px';
+        // const reportCell_id = (rpframe.contentDocument.querySelector('[id$="ReportCell"]') ?
+        //     rpframe.contentDocument.querySelector('[id$="ReportCell"]').id : null);
+        // console.log(reportCell_id);
+        // if (reportCell_id) {
+        //   const reportCell = rpframe.contentDocument.getElementById(reportCell_id);
+        //   console.log(reportCell.clientHeight);
+        //   console.log(reportCell.clientWidth);
+        //   rpframe.height = String(reportCell.clientHeight + 50) + 'px';
+        //   rpframe.width = String(reportCell.clientWidth + 50) + 'px';
+        // } else {
+        //   rpframe.height = '400px';
+        // }
+
+      }, error => console.log(error));
+    }
+  }
 }

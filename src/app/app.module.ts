@@ -6,7 +6,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MatIconModule, MatProgressSpinnerModule
+import { MatIconModule, MatProgressSpinnerModule, MatTabsModule
 } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -33,6 +33,7 @@ import { ReportFrameComponent } from './report-frame/report-frame.component';
       FormsModule,
       MatIconModule,
       MatProgressSpinnerModule,
+      MatTabsModule,
       RouterModule.forRoot(appRoutes, {useHash: true}),
    ],
    providers: [],

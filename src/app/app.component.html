@@ -1,19 +1,31 @@
 
-<div class="overlay" *ngIf="!isReady">
+<div class="overlay" *ngIf="!isReady && !isAdminPage">
   <div class="loading">
     <mat-spinner></mat-spinner>
     <p class="ld-text">Loading...</p>
   </div>
 </div>
 <!-- *ngIf="isReady" -->
+<div id="sptopmenu" class="row sp-top-menu" *ngIf="!isAdminPage">
+  <div class="col-md-11 mx-auto sp-top-left-menu"></div>
+  <div class="col-md-1 sp-top-right-menu">
+    <a id="sptglbtn" href="#" class="sp-menu-root" (click)="toggleSettings()" *ngIf="isAdmin">
+      <span class="sp-imgspan">
+        <img src="/_layouts/15/images/spcommon.png?rev=23" alt="Settings" class="sp-menu-btn-icon" title="Settings">
+      </span>
+    </a>
+  </div>
+</div>
 
-<div class="overflow-hidden text-center" style="margin-top: -10px;" *ngIf="isReady">
+
+<div class="overflow-hidden text-center" style="margin-top: -10px;" *ngIf="!isAdminPage">
   <div class="col-md-3 mx-auto">
     <img id="logo" src="https://dsu.aubmc.org.lb/SiteAssets/DS-icon2-150px%20(2).png" alt="LOGO" style="width: 20%;">
     <h2 id="pageTitle" class="font-weight-normal">Decision Support Unit</h2>
   </div>
 </div>
 
-<main class="position-relative overflow-hidden text-center" *ngIf="isReady">
+<main class="position-relative overflow-hidden text-center" *ngIf="!isAdminPage">
   <router-outlet></router-outlet>
 </main>
+
