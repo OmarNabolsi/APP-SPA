@@ -14,6 +14,7 @@ export class SubSiteComponent implements OnInit, AfterViewInit {
   path = '';
   pageName = '';
   hasSubSites = false;
+  isHR = false;
   sites: any[] = [];
 
   constructor(private route: ActivatedRoute,
@@ -24,8 +25,10 @@ export class SubSiteComponent implements OnInit, AfterViewInit {
     this.path = this.route.snapshot.params.url;
     this.pageName = localStorage.getItem('pageName');
     localStorage.removeItem('reportName');
+    this.isHR = this.pageName === 'HR';
 
     this.reportListService.hasSubSite(this.path).subscribe((r: any) => {
+      this.sharedService.emitChange(false);
       const results = r.d.results as any[];
       if (results.length > 0) {
         this.hasSubSites = true;
@@ -41,7 +44,9 @@ export class SubSiteComponent implements OnInit, AfterViewInit {
             }
             report.name = results_[i].Name;
             report.relativeUrl = results_[i].ServerRelativeUrl;
-            homeReports.push(report);
+            if (results_[i].Title !== 'Sub-report') {
+              homeReports.push(report);
+            }
           }
           const subSite_ = {
             path: this.path,
@@ -51,8 +56,10 @@ export class SubSiteComponent implements OnInit, AfterViewInit {
           if (subSite_.reports.length > 0) {
             this.sites.push(subSite_);
           }
+          this.sharedService.emitChange(true);
         }, err => {
           console.error(err);
+          this.sharedService.emitChange(true);
         }, () => {
           for (let i = 0; i < results.length; i++) {
             const path_ = results[i].Url.split('/')[3] + '/' + results[i].Url.split('/')[4];
@@ -69,7 +76,9 @@ export class SubSiteComponent implements OnInit, AfterViewInit {
                 }
                 report.name = results_1[j].Name;
                 report.relativeUrl = results_1[j].ServerRelativeUrl;
-                subReports.push(report);
+                if (results_1[j].Title !== 'Sub-report') {
+                  subReports.push(report);
+                }
               }
               const subSite_1 = {
                 path: path_,
@@ -79,12 +88,14 @@ export class SubSiteComponent implements OnInit, AfterViewInit {
               if (subSite_1.reports.length > 0) {
                 this.sites.push(subSite_1);
               }
+              this.sharedService.emitChange(true);
             }, err => {
               console.error(err);
+              this.sharedService.emitChange(true);
             });
           }
         });
-
+        this.sharedService.emitChange(true);
       } else {
         this.hasSubSites = false;
         this.reportListService.getReports(this.path).subscribe((rs: any) => {
@@ -98,14 +109,29 @@ export class SubSiteComponent implements OnInit, AfterViewInit {
             }
             report.name = results_[i].Name;
             report.relativeUrl = results_[i].ServerRelativeUrl;
-            this.reports.push(report);
+            if (results_[i].Title !== 'Sub-report') {
+              this.reports.push(report);
+            }
           }
+          if (this.isHR) {
+            const empList = {
+              title: 'Employee List (Detailed)',
+              name: 'empList',
+              relativeUrl: ''
+            };
+            this.reports.push(empList);
+          }
+          this.sharedService.emitChange(true);
         }, err => {
           console.error(err);
+          this.sharedService.emitChange(true);
         });
       }
-    }, error => console.log(error));
-
+    }, error => {
+      console.log(error);
+      this.sharedService.emitChange(true);
+    });
+    this.sharedService.emitChange(true);
   }
 
   ngAfterViewInit() {

@@ -17,9 +17,13 @@ export class AppComponent implements OnInit {
   constructor(private sphomeService: SphomeService,
     private sharedService: SharedService) {
       this.sharedService.changeEmitted.subscribe((finished) => {
-        setTimeout(() => {
-          this.isReady = finished;
-        }, 900);
+        if (!finished) {
+          this.isReady = false;
+        } else {
+          setTimeout(() => {
+            this.isReady = finished;
+          }, 900);
+        }
       });
       const dsuAdmin = window.location.hostname;
       if (dsuAdmin === 'dsuadmin.aubmc.org.lb') {
@@ -31,29 +35,41 @@ export class AppComponent implements OnInit {
     if (!this.isAdminPage) {
       setTimeout(() => {
         const titlerow = document.getElementById('s4-titlerow');
-        titlerow.style.visibility = 'hidden';
-        titlerow.style.maxHeight = '0';
-        titlerow.style.padding = '0';
+        if (titlerow) {
+          titlerow.style.visibility = 'hidden';
+          titlerow.style.maxHeight = '0';
+          titlerow.style.padding = '0';
+        }
 
         const sideNavBox = document.getElementById('sideNavBox');
-        sideNavBox.style.visibility = 'hidden';
-        sideNavBox.style.maxHeight = '0';
-        sideNavBox.style.padding = '0';
+        if (sideNavBox) {
+          sideNavBox.style.visibility = 'hidden';
+          sideNavBox.style.maxHeight = '0';
+          sideNavBox.style.padding = '0';
+        }
 
         const suiteBar = document.getElementById('suiteBar');
-        suiteBar.style.display = 'none';
+        if (suiteBar) {
+          suiteBar.style.display = 'none';
+        }
 
         const s4ribbonrow = document.getElementById('s4-ribbonrow');
-        s4ribbonrow.style.display = 'none';
+        if (s4ribbonrow) {
+          s4ribbonrow.style.display = 'none';
+        }
 
         const contentRow = document.getElementById('contentRow');
-        contentRow.style.paddingTop = '1px';
+        if (contentRow) {
+          contentRow.style.paddingTop = '1px';
+        }
 
         // const rtestate = document.getElementsByClassName('ms-rtestate-read').item(1) as HTMLDivElement;
         // rtestate.style.marginTop = '-45px';
 
         const WebPartWPQ2_ChromeTitle = document.getElementById('WebPartWPQ2_ChromeTitle');
-        WebPartWPQ2_ChromeTitle.style.display = 'none';
+        if (WebPartWPQ2_ChromeTitle) {
+          WebPartWPQ2_ChromeTitle.style.display = 'none';
+        }
 
         // this.isReady = true;
         this.shouldShowSettings();

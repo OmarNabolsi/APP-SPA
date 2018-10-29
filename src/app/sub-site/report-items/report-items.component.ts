@@ -30,17 +30,22 @@ export class ReportItemsComponent implements OnInit {
 
   navigateTo() {
     // this.router.navigate(['report/', this.path, this.report.name]);
-    const extras: NavigationExtras = {
-      queryParams: {
-        'path': this.path,
-        'name': this.report.name,
-        'rpUrl': this.report.relativeUrl,
-        'title': this.report.title
-      },
-      skipLocationChange: true,
-      preserveFragment: true
-    };
-    localStorage.setItem('reportName', this.report.title);
-    this.router.navigate(['report'], extras);
+    if (this.report.name === 'empList') {
+      window.open('https://his.aub.edu.lb/HRS.Portal/Reports/Rep_ActiveEmployees.aspx', '_blank');
+      history.go(0);
+    } else {
+      const extras: NavigationExtras = {
+        queryParams: {
+          'path': this.path,
+          'name': this.report.name,
+          'rpUrl': this.report.relativeUrl,
+          'title': this.report.title
+        },
+        skipLocationChange: true,
+        preserveFragment: true
+      };
+      localStorage.setItem('reportName', this.report.title);
+      this.router.navigate(['report'], extras);
+    }
   }
 }

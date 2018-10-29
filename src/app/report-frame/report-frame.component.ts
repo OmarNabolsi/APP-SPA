@@ -45,12 +45,17 @@ export class ReportFrameComponent implements OnInit, AfterViewInit {
         return data;
       })
     ).subscribe(data => {
+      this.sharedService.emitChange(false);
       this.path = data.path;
       this.reportName = data.name;
       this.reportUrl = data.url;
       this.reportTitle = data.title;
       this.reportSrcUrl();
-    }, error => console.log(error));
+      this.sharedService.emitChange(true);
+    }, error => {
+      console.log(error);
+      this.sharedService.emitChange(true);
+    });
 
     this.reqDigest = (document.getElementById('__REQUESTDIGEST') as HTMLInputElement).value;
   }
@@ -90,7 +95,12 @@ export class ReportFrameComponent implements OnInit, AfterViewInit {
         //   rpframe.height = '400px';
         // }
 
-      }, error => console.log(error));
+      }, error => {
+        console.log(error);
+        const rpframe = document.getElementById('rpframe') as HTMLIFrameElement;
+        rpframe.width = rpframe.contentWindow.document.body.scrollWidth.toString() + 'px';
+        rpframe.height = '1250px';
+      });
     }
   }
 }
